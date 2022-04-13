@@ -556,6 +556,7 @@ open class FTPFileProvider: NSObject, FileProviderBasicRemote, FileProviderOpera
                     progress.cancel()
                 }
                 do {
+                    try FileManager.default.replaceItem(at: tempURL, withItemAt: destURL)
                     try FileManager.default.moveItem(at: tempURL, to: destURL)
                     try FileManager.default.removeItem(at: tempURL)
                 } catch {
